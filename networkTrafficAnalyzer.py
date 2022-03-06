@@ -36,4 +36,5 @@ def capture_packets():
 
 #main method
 if(__name__=="__main__"):
+    maliciousIPAddress()
     capture_packets()
