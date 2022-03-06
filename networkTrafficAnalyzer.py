@@ -1,11 +1,11 @@
-from scapy.all import *
+import pyshark                  #to use wireshark dissectors and packet sniffing
 
-#sniff packets and store them in pktSniffed.pcap
+#start with packet sniffing
 def capture_packets():
-    capture=sniff(count=20)
+    capture=pyshark.LiveCapture()
+    capture.sniff(timeout=50)
 
-    wrpcap("pktSniffed.pcap",capture)
-#pcap file created!
 
-#analyze packets from pktSniffed.pcap
-
+#main method
+if(__name__=="__main__"):
+    capture_packets()
