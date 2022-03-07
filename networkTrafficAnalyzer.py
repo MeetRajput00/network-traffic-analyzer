@@ -1,10 +1,18 @@
 from flask import request
 import unicodedata
 import pandas,numpy,matplotlib,pyshark  #to use wireshark dissectors and packet sniffing
+import urllib
 
 blacklistIPS=[]
-
+validIPS=[]
+srcIPS=set()
+averageTraffic=5
 #web crawler to get malicious ip address over the internet
+def locationFromIP(ip):
+
+    response = urllib.urlopen("http://api.hostip.info/get_html.php?ip={}&position=true".format(ip)).read()
+
+    print(response)
 
 def maliciousIPAddress():
     df=pandas.read_html("https://www.projecthoneypot.org/list_of_ips.php?ctry=IN")
@@ -26,12 +34,17 @@ def capture_packets():
     capture=pyshark.LiveCapture()
 
     #stores source and destination ip address over the network interface 
-          
-    for packets in capture.sniff_continuously(packet_count=20):
-        if packets.ip.dst in blacklistIPS:
-            print("{} interacted with a blacklisted IP.".format(packets.ip.src))
+    for packet in capture.sniff_continuously(packet_count=20):
+        srcIPS.add(packet.ip.src)
+        if(len(srcIPS)>averageTraffic):
+            print("You are getting more traffic than usual.")
+        if packet.ip.src not in validIPS:
+            print("{} is not a registered IP.".format(packet.ip.src))
+            locationFromIP(packet.ip.src)
+        if packet.ip.dst in blacklistIPS:
+            print("{} interacted with a blacklisted IP.".format(packet.ip.src))
+            locationFromIP(packet.ip.src)
     
-
 
 
 #main method
