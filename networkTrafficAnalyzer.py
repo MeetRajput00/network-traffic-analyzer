@@ -4,6 +4,7 @@ import pandas,numpy,matplotlib,pyshark  #to use wireshark dissectors and packet 
 import urllib
 from tkinter import *
 import tkinter as tk
+from idlelib.tooltip import Hovertip
 
 blacklistIPS=[]
 validIPS=['127.0.0.1','192.168.211.7','157.240.239.60']
@@ -54,8 +55,35 @@ if(__name__=="__main__"):
     root=Tk()
     root.title("Network Traffic Analyzer")
     root.geometry('600x400')
+    root.configure(bg="#2E3532")
 
-    statusbar = tk.Label(root, text="Application running.", bd=1, relief=tk.SUNKEN, anchor=tk.W)
+    startImage=PhotoImage(file=r'icons\round-play-button.png').subsample(2,2)
+    stopImage=PhotoImage(file=r'icons\stop.png').subsample(2,2)
+    findImage=PhotoImage(file=r'icons\find.png').subsample(2,2)
+    filterImage=PhotoImage(file=r'icons\filter.png').subsample(2,2)
+    mainIconImage=PhotoImage(file=r'icons\internet.png').subsample(2,2)
+    
+    root.iconphoto(False, mainIconImage)
+
+    statusbar = tk.Label(root, text="Application running...", bd=1, relief=tk.SUNKEN, anchor=tk.W,bg="#C7CEDB")
     statusbar.pack(side=tk.BOTTOM, fill=tk.X)
     
+    iconFrame=tk.Frame(root,bd=1,bg="#7E9181")
+    iconFrame.pack(side=tk.TOP,fill=tk.X)
+
+    startButton= tk.Button(iconFrame, image=startImage)
+    stopButton=tk.Button(iconFrame, image=stopImage)
+    findButton=tk.Button(iconFrame, image=findImage)
+    filterButton=tk.Button(iconFrame, image=filterImage)
+
+    startButton.pack(side=tk.LEFT,padx=2)
+    stopButton.pack(side=tk.LEFT,padx=2)
+    findButton.pack(side=tk.LEFT,padx=2)
+    filterButton.pack(side=tk.LEFT,padx=2)
+
+    startTT=Hovertip(startButton, "Start capturing packets")
+    stopTT=Hovertip(stopButton, "Stop")
+    findTT=Hovertip(findButton, "Find a packet")
+    filterTT=Hovertip(filterButton, "Apply filter to captured packets")
+
     root.mainloop()
