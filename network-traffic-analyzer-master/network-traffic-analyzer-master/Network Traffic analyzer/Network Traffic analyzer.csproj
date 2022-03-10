@@ -11,7 +11,9 @@
 
   <ItemGroup>
     <PackageReference Include="IronPython" Version="2.7.12" />
-    <PackageReference Include="SharpPcap" Version="6.1.0" />
+    <PackageReference Include="PacketDotNet" Version="0.16.0" />
+    <PackageReference Include="Pcap.Net.x86" Version="1.0.4.1" />
+    <PackageReference Include="SharpPcap" Version="4.4.0" />
   </ItemGroup>
 
   <ItemGroup>

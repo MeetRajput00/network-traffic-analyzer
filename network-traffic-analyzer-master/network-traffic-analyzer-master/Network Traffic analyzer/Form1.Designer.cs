@@ -38,6 +38,12 @@
             this.pnlNav = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.packetTable = new System.Windows.Forms.ListView();
+            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
+            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.panel8 = new System.Windows.Forms.Panel();
             this.anonymousIPText = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -56,12 +62,6 @@
             this.startButton = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pauseButton = new System.Windows.Forms.Button();
-            this.packetTable = new System.Windows.Forms.ListView();
-            this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader3 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader4 = new System.Windows.Forms.ColumnHeader();
-            this.columnHeader5 = new System.Windows.Forms.ColumnHeader();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -201,6 +201,50 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(956, 688);
             this.panel3.TabIndex = 2;
+            // 
+            // packetTable
+            // 
+            this.packetTable.BackColor = System.Drawing.SystemColors.Window;
+            this.packetTable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+            this.packetTable.FullRowSelect = true;
+            this.packetTable.GridLines = true;
+            this.packetTable.Location = new System.Drawing.Point(29, 350);
+            this.packetTable.Name = "packetTable";
+            this.packetTable.Size = new System.Drawing.Size(737, 313);
+            this.packetTable.TabIndex = 6;
+            this.packetTable.UseCompatibleStateImageBehavior = false;
+            this.packetTable.View = System.Windows.Forms.View.Details;
+            this.packetTable.SelectedIndexChanged += new System.EventHandler(this.packetTable_SelectedIndexChanged);
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "S. No.";
+            this.columnHeader1.Width = 100;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Time taken";
+            this.columnHeader2.Width = 140;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Source IP";
+            this.columnHeader3.Width = 180;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Destination IP";
+            this.columnHeader4.Width = 180;
+            // 
+            // columnHeader5
+            // 
+            this.columnHeader5.Text = "Protocol";
+            this.columnHeader5.Width = 140;
             // 
             // panel8
             // 
@@ -358,6 +402,7 @@
             this.stopButton.Text = "Stop";
             this.stopButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.stopButton.UseVisualStyleBackColor = false;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // panel6
             // 
@@ -402,49 +447,7 @@
             this.pauseButton.Text = "Pause";
             this.pauseButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.pauseButton.UseVisualStyleBackColor = false;
-            // 
-            // packetTable
-            // 
-            this.packetTable.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.packetTable.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-            this.packetTable.FullRowSelect = true;
-            this.packetTable.GridLines = true;
-            this.packetTable.Location = new System.Drawing.Point(29, 350);
-            this.packetTable.Name = "packetTable";
-            this.packetTable.Size = new System.Drawing.Size(737, 313);
-            this.packetTable.TabIndex = 6;
-            this.packetTable.UseCompatibleStateImageBehavior = false;
-            this.packetTable.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "S. No.";
-            this.columnHeader1.Width = 100;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Time taken";
-            this.columnHeader2.Width = 140;
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Source IP";
-            this.columnHeader3.Width = 180;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Destination IP";
-            this.columnHeader4.Width = 180;
-            // 
-            // columnHeader5
-            // 
-            this.columnHeader5.Text = "Protocol";
-            this.columnHeader5.Width = 140;
+            this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
             // 
             // Form1
             // 

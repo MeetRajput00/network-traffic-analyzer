@@ -1,9 +1,14 @@
+using System;
+using System.IO;
+using System.Threading;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
-using IronPython.Hosting;
 using SharpPcap.LibPcap;
-using PacketDotNet;
 using SharpPcap;
+using PacketDotNet;
+using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 namespace Network_Traffic_analyzer
 {
@@ -26,20 +31,27 @@ namespace Network_Traffic_analyzer
         LibPcapLiveDevice wifi_device;
         CaptureFileWriterDevice captureFileWriter;
         Dictionary<int, Packet> capturedPackets_list = new Dictionary<int, Packet>();
+        HashSet<string> activeIPs;
 
         int packetNumber = 1;
-        string time_str = "", sourceIP = "", destinationIP = "", protocol_type = "";
+        string time_str = "", sourceIP = "", destinationIP = "", protocol_type = "", length = "";
 
         bool startCapturingAgain = false;
 
         Thread sniffing;
 
 
-
-        public Form1()
+        public Form1(List<LibPcapLiveDevice> interfaces, int selectedIndex)
         {
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
+            this.interfaceList = interfaces;
+            selectedIntIndex = selectedIndex;
+            // Extract a device from the list
+            wifi_device = interfaceList[selectedIntIndex];
+            pauseButton.Enabled = false;
+            stopButton.Enabled = false;
+            activeIPs = new HashSet<string>();
         }
         private void sniffing_Proccess()
         {
@@ -64,13 +76,15 @@ namespace Network_Traffic_analyzer
             // start extracting properties for the listview 
             DateTime time = e.Packet.Timeval.Date;
             time_str = (time.Hour + 1) + ":" + time.Minute + ":" + time.Second + ":" + time.Millisecond;
-            length = e.Packet.Data.Length.ToString();
 
 
             var packet = PacketDotNet.Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
 
             // add to the list
-            capturedPackets_list.Add(packetNumber, packet);
+            if (!capturedPackets_list.ContainsKey(packetNumber)) 
+            {
+                capturedPackets_list.Add(packetNumber, packet);
+            }
 
 
             var ipPacket = (IpPacket)packet.Extract(typeof(IpPacket));
@@ -93,11 +107,29 @@ namespace Network_Traffic_analyzer
                 item.SubItems.Add(sourceIP);
                 item.SubItems.Add(destinationIP);
                 item.SubItems.Add(protocol_type);
-                item.SubItems.Add(length);
+                activeIPs.Add(sourceIP);
+                activeIPs.Add(destinationIP);
+                try
+                {
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        activeIPText.Text = Convert.ToString(activeIPs.Count);
+                    }));
+                }
+                catch(Exception err)
+                {
 
+                }
 
                 Action action = () => packetTable.Items.Add(item);
-                packetTable.Invoke(action);
+                try
+                {
+                    packetTable.Invoke(action);
+                }
+                catch(Exception err)
+                {
+
+                }
 
                 ++packetNumber;
             }
@@ -159,6 +191,31 @@ namespace Network_Traffic_analyzer
 
         }
 
+        private void pauseButton_Click(object sender, EventArgs e)
+        {
+            Thread.Sleep(10000);
+            pauseButton.Enabled = false;
+            startButton.Enabled = true;
+        }
+
+        private void stopButton_Click(object sender, EventArgs e)
+        {
+            Thread.Sleep(10000);
+            stopButton.Enabled = false;
+            startButton.Enabled = true;
+            packetTable.Clear();
+            packetTable.Columns.Add("S. No.").Width=100;
+            packetTable.Columns.Add("Time taken").Width=140;
+            packetTable.Columns.Add("Source IP").Width=180;
+            packetTable.Columns.Add("Destination IP").Width=180;
+            packetTable.Columns.Add("Protocol").Width=140;
+        }
+
+        private void packetTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void label10_Click(object sender, EventArgs e)
         {
 
@@ -184,7 +241,7 @@ namespace Network_Traffic_analyzer
                 sniffing.Start();
                 startButton.Enabled = false;
                 pauseButton.Enabled = true;
-
+                stopButton.Enabled = true;
             }
             else if (startCapturingAgain)
             {
@@ -199,6 +256,7 @@ namespace Network_Traffic_analyzer
                     sniffing = new Thread(new ThreadStart(sniffing_Proccess));
                     sniffing.Start();
                     startButton.Enabled = false;
+                    pauseButton.Enabled = true;
                     stopButton.Enabled = true;
                 }
             }
