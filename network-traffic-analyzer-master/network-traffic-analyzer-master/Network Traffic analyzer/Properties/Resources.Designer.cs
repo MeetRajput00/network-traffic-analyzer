@@ -63,6 +63,16 @@ namespace Network_Traffic_analyzer.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap admin {
+            get {
+                object obj = ResourceManager.GetObject("admin", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap far_trade_banner_home_balls {
             get {
                 object obj = ResourceManager.GetObject("far-trade-banner-home_balls", resourceCulture);
@@ -76,6 +86,26 @@ namespace Network_Traffic_analyzer.Properties {
         internal static System.Drawing.Bitmap icons8_add_25 {
             get {
                 object obj = ResourceManager.GetObject("icons8-add-25", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_admin_100 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-admin-100", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_admin_30 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-admin-30", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

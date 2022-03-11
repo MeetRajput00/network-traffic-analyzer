@@ -111,6 +111,21 @@ namespace Network_Traffic_analyzer
                 item.SubItems.Add(sourceIP);
                 item.SubItems.Add(destinationIP);
                 item.SubItems.Add(protocol_type);
+                try
+                {
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        if (!protocolsList.Contains(protocol_type))
+                        {
+                            packetSentText.Text = Convert.ToString(packetNumber);
+                            packetReceivedText.Text = Convert.ToString(packetNumber);
+                        }
+                    }));
+                }
+                catch (Exception err)
+                {
+
+                }
                 activeIPs.Add(sourceIP);
                 activeIPs.Add(destinationIP);
                 try
@@ -259,6 +274,8 @@ namespace Network_Traffic_analyzer
         {
 
         }
+
+        
 
         private void filterCombo_SelectedIndexChanged(object sender, EventArgs e)
         {
