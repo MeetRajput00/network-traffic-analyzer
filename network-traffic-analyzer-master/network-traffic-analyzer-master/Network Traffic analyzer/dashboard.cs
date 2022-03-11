@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace Network_Traffic_analyzer
 {
-    public partial class Form1 : Form
+    public partial class dashboard : Form
     {
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -41,16 +41,18 @@ namespace Network_Traffic_analyzer
         Thread sniffing;
 
 
-        public Form1(List<LibPcapLiveDevice> interfaces, int selectedIndex)
+        public dashboard(List<LibPcapLiveDevice> interfaces, int selectedIndex)
         {
             InitializeComponent();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
+            this.dashboardButton.Enabled = false;
             this.interfaceList = interfaces;
             selectedIntIndex = selectedIndex;
             // Extract a device from the list
             wifi_device = interfaceList[selectedIntIndex];
             pauseButton.Enabled = false;
             stopButton.Enabled = false;
+            filterButton.Enabled = false;
             activeIPs = new HashSet<string>();
         }
         private void sniffing_Proccess()
@@ -196,6 +198,8 @@ namespace Network_Traffic_analyzer
             Thread.Sleep(10000);
             pauseButton.Enabled = false;
             startButton.Enabled = true;
+            stopButton.Enabled = true;
+            filterButton.Enabled = true;
         }
 
         private void stopButton_Click(object sender, EventArgs e)
@@ -203,6 +207,8 @@ namespace Network_Traffic_analyzer
             Thread.Sleep(10000);
             stopButton.Enabled = false;
             startButton.Enabled = true;
+            pauseButton.Enabled = false;
+            filterButton.Enabled = false;
             packetTable.Clear();
             packetTable.Columns.Add("S. No.").Width=100;
             packetTable.Columns.Add("Time taken").Width=140;
@@ -212,6 +218,28 @@ namespace Network_Traffic_analyzer
         }
 
         private void packetTable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void addIPButton_Click(object sender, EventArgs e)
+        {
+            addips obj = new addips();
+            obj.Show();
+        }
+
+        private void IPlocationButton_Click(object sender, EventArgs e)
+        {
+            ipLocation obj = new ipLocation();
+            obj.Show();
+        }
+
+        private void dashboardButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void filterButton_Click(object sender, EventArgs e)
         {
 
         }
@@ -242,6 +270,7 @@ namespace Network_Traffic_analyzer
                 startButton.Enabled = false;
                 pauseButton.Enabled = true;
                 stopButton.Enabled = true;
+                filterButton.Enabled = true;
             }
             else if (startCapturingAgain)
             {
@@ -258,6 +287,7 @@ namespace Network_Traffic_analyzer
                     startButton.Enabled = false;
                     pauseButton.Enabled = true;
                     stopButton.Enabled = true;
+                    filterButton.Enabled = true;
                 }
             }
             startCapturingAgain = true;

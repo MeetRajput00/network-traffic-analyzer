@@ -15,6 +15,7 @@ namespace Network_Traffic_analyzer
         public addips()
         {
             InitializeComponent();
+            addIPButton.Enabled = false;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -25,6 +26,23 @@ namespace Network_Traffic_analyzer
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnDashbord_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+        }
+
+        private void btnext_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void ipLocationButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ipLocation obj = new ipLocation();
+            obj.Show();
         }
     }
 }

@@ -16,10 +16,10 @@ using PacketDotNet;
 
 namespace Network_Traffic_analyzer
 {
-    public partial class Form2 : Form
+    public partial class networkInterface : Form
     {
         List<LibPcapLiveDevice> interfaceList = new List<LibPcapLiveDevice>();
-        public Form2()
+        public networkInterface()
         {
             InitializeComponent();
             LibPcapLiveDeviceList devices = LibPcapLiveDeviceList.Instance;
@@ -49,7 +49,7 @@ namespace Network_Traffic_analyzer
         {
             if (networkInterfaceCombo.SelectedIndex >= 0 && networkInterfaceCombo.SelectedIndex < interfaceList.Count)
             {
-                Form1 openMainForm = new Form1(interfaceList, networkInterfaceCombo.SelectedIndex);
+                dashboard openMainForm = new dashboard(interfaceList, networkInterfaceCombo.SelectedIndex);
                 this.Hide();
                 openMainForm.Show();
             }

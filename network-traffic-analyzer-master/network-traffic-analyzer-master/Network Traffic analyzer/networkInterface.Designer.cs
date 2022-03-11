@@ -1,6 +1,6 @@
 ﻿namespace Network_Traffic_analyzer
 {
-    partial class Form2
+    partial class networkInterface
     {
         /// <summary>
         /// Required designer variable.

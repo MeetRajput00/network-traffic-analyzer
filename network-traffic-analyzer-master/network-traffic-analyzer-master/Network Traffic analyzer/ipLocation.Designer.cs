@@ -1,6 +1,6 @@
 ﻿namespace Network_Traffic_analyzer
 {
-    partial class Form4
+    partial class ipLocation
     {
         /// <summary>
         /// Required designer variable.
@@ -30,20 +30,20 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnext = new System.Windows.Forms.Button();
-            this.btnloc = new System.Windows.Forms.Button();
-            this.btnadd = new System.Windows.Forms.Button();
-            this.btnDashbord = new System.Windows.Forms.Button();
+            this.ipLocationButton = new System.Windows.Forms.Button();
+            this.addIPButton = new System.Windows.Forms.Button();
+            this.dashboardButton = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -57,9 +57,9 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(30)))), ((int)(((byte)(54)))));
             this.panel1.Controls.Add(this.btnext);
-            this.panel1.Controls.Add(this.btnloc);
-            this.panel1.Controls.Add(this.btnadd);
-            this.panel1.Controls.Add(this.btnDashbord);
+            this.panel1.Controls.Add(this.ipLocationButton);
+            this.panel1.Controls.Add(this.addIPButton);
+            this.panel1.Controls.Add(this.dashboardButton);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -81,51 +81,55 @@
             this.btnext.Text = "Exit";
             this.btnext.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.btnext.UseVisualStyleBackColor = true;
+            this.btnext.Click += new System.EventHandler(this.btnext_Click);
             // 
-            // btnloc
+            // ipLocationButton
             // 
-            this.btnloc.FlatAppearance.BorderSize = 0;
-            this.btnloc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnloc.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnloc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnloc.Image = global::Network_Traffic_analyzer.Properties.Resources.icons8_map_25;
-            this.btnloc.Location = new System.Drawing.Point(0, 264);
-            this.btnloc.Name = "btnloc";
-            this.btnloc.Size = new System.Drawing.Size(247, 42);
-            this.btnloc.TabIndex = 3;
-            this.btnloc.Text = "IP\'s Location";
-            this.btnloc.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnloc.UseVisualStyleBackColor = true;
+            this.ipLocationButton.FlatAppearance.BorderSize = 0;
+            this.ipLocationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ipLocationButton.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.ipLocationButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.ipLocationButton.Image = global::Network_Traffic_analyzer.Properties.Resources.icons8_map_25;
+            this.ipLocationButton.Location = new System.Drawing.Point(0, 264);
+            this.ipLocationButton.Name = "ipLocationButton";
+            this.ipLocationButton.Size = new System.Drawing.Size(247, 42);
+            this.ipLocationButton.TabIndex = 3;
+            this.ipLocationButton.Text = "IP\'s Location";
+            this.ipLocationButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.ipLocationButton.UseVisualStyleBackColor = true;
+            this.ipLocationButton.Click += new System.EventHandler(this.btnloc_Click);
             // 
-            // btnadd
+            // addIPButton
             // 
-            this.btnadd.FlatAppearance.BorderSize = 0;
-            this.btnadd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnadd.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnadd.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnadd.Image = global::Network_Traffic_analyzer.Properties.Resources.icons8_add_25;
-            this.btnadd.Location = new System.Drawing.Point(0, 216);
-            this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(247, 42);
-            this.btnadd.TabIndex = 4;
-            this.btnadd.Text = "Add IP\'s     ";
-            this.btnadd.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnadd.UseVisualStyleBackColor = true;
+            this.addIPButton.FlatAppearance.BorderSize = 0;
+            this.addIPButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.addIPButton.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.addIPButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.addIPButton.Image = global::Network_Traffic_analyzer.Properties.Resources.icons8_add_25;
+            this.addIPButton.Location = new System.Drawing.Point(0, 216);
+            this.addIPButton.Name = "addIPButton";
+            this.addIPButton.Size = new System.Drawing.Size(247, 42);
+            this.addIPButton.TabIndex = 4;
+            this.addIPButton.Text = "Add IP\'s     ";
+            this.addIPButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.addIPButton.UseVisualStyleBackColor = true;
+            this.addIPButton.Click += new System.EventHandler(this.addIPButton_Click);
             // 
-            // btnDashbord
+            // dashboardButton
             // 
-            this.btnDashbord.FlatAppearance.BorderSize = 0;
-            this.btnDashbord.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashbord.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnDashbord.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.btnDashbord.Image = global::Network_Traffic_analyzer.Properties.Resources.icons8_home_24;
-            this.btnDashbord.Location = new System.Drawing.Point(-1, 168);
-            this.btnDashbord.Name = "btnDashbord";
-            this.btnDashbord.Size = new System.Drawing.Size(248, 42);
-            this.btnDashbord.TabIndex = 5;
-            this.btnDashbord.Text = "Dashboard";
-            this.btnDashbord.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnDashbord.UseVisualStyleBackColor = true;
+            this.dashboardButton.FlatAppearance.BorderSize = 0;
+            this.dashboardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.dashboardButton.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.dashboardButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.dashboardButton.Image = global::Network_Traffic_analyzer.Properties.Resources.icons8_home_24;
+            this.dashboardButton.Location = new System.Drawing.Point(-1, 168);
+            this.dashboardButton.Name = "dashboardButton";
+            this.dashboardButton.Size = new System.Drawing.Size(248, 42);
+            this.dashboardButton.TabIndex = 5;
+            this.dashboardButton.Text = "Dashboard";
+            this.dashboardButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.dashboardButton.UseVisualStyleBackColor = true;
+            this.dashboardButton.Click += new System.EventHandler(this.dashboardButton_Click);
             // 
             // panel2
             // 
@@ -159,72 +163,16 @@
             this.panel3.Size = new System.Drawing.Size(220, 688);
             this.panel3.TabIndex = 2;
             // 
-            // label1
+            // label4
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
-            this.label1.Location = new System.Drawing.Point(3, 8);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 20);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Locate IP";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 59);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 19);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Enter IP:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(18, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(199, 23);
-            this.textBox1.TabIndex = 9;
-            // 
-            // button1
-            // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.button1.FlatAppearance.BorderSize = 3;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
-            this.button1.Image = global::Network_Traffic_analyzer.Properties.Resources.icons8_location_23;
-            this.button1.Location = new System.Drawing.Point(122, 110);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(95, 35);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Locate";
-            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(4, 213);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 15);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Longitude:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(4, 250);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(63, 15);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Latitude:";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(85, 250);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(51, 15);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "0.0.0.0";
             // 
             // label6
             // 
@@ -237,16 +185,71 @@
             this.label6.TabIndex = 13;
             this.label6.Text = "0.0.0.0";
             // 
-            // label4
+            // label3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(85, 250);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 15);
-            this.label4.TabIndex = 13;
-            this.label4.Text = "0.0.0.0";
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(4, 250);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(63, 15);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Latitude:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(4, 213);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(75, 15);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Longitude:";
+            // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.button1.FlatAppearance.BorderSize = 3;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Nirmala UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(126)))), ((int)(((byte)(249)))));
+            this.button1.Location = new System.Drawing.Point(122, 110);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(95, 35);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Locate";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(18, 81);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(199, 23);
+            this.textBox1.TabIndex = 9;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft YaHei", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(3, 59);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 19);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Enter IP:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(161)))), ((int)(((byte)(176)))));
+            this.label1.Location = new System.Drawing.Point(3, 8);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Locate IP";
             // 
             // panel4
             // 
@@ -267,7 +270,7 @@
             this.label7.TabIndex = 9;
             this.label7.Text = "MAP";
             // 
-            // Form4
+            // ipLocation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -277,7 +280,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form4";
+            this.Name = "ipLocation";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form4";
             this.panel1.ResumeLayout(false);
@@ -311,5 +314,8 @@
         private Label label6;
         private Panel panel4;
         private Label label7;
+        private Button ipLocationButton;
+        private Button addIPButton;
+        private Button dashboardButton;
     }
 }

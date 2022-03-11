@@ -1,6 +1,6 @@
 ﻿namespace Network_Traffic_analyzer
 {
-    partial class Form1
+    partial class dashboard
     {
         /// <summary>
         ///  Required designer variable.
@@ -118,6 +118,7 @@
             this.IPlocationButton.Text = "IP\'s Location";
             this.IPlocationButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.IPlocationButton.UseVisualStyleBackColor = true;
+            this.IPlocationButton.Click += new System.EventHandler(this.IPlocationButton_Click);
             // 
             // addIPButton
             // 
@@ -133,6 +134,7 @@
             this.addIPButton.Text = "Add IP\'s     ";
             this.addIPButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.addIPButton.UseVisualStyleBackColor = true;
+            this.addIPButton.Click += new System.EventHandler(this.addIPButton_Click);
             // 
             // dashboardButton
             // 
@@ -148,6 +150,7 @@
             this.dashboardButton.Text = "Dashboard";
             this.dashboardButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.dashboardButton.UseVisualStyleBackColor = true;
+            this.dashboardButton.Click += new System.EventHandler(this.dashboardButton_Click);
             // 
             // panel2
             // 
@@ -389,6 +392,7 @@
             this.filterButton.Text = "Filter";
             this.filterButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.filterButton.UseVisualStyleBackColor = false;
+            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
             // 
             // stopButton
             // 
@@ -449,7 +453,7 @@
             this.pauseButton.UseVisualStyleBackColor = false;
             this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
             // 
-            // Form1
+            // dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -459,7 +463,7 @@
             this.Controls.Add(this.pnlNav);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "dashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
