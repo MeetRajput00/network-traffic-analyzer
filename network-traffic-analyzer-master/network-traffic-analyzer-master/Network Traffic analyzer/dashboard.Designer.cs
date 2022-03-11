@@ -38,6 +38,9 @@
             this.pnlNav = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.filterCombo = new System.Windows.Forms.ComboBox();
             this.packetTable = new System.Windows.Forms.ListView();
             this.columnHeader1 = new System.Windows.Forms.ColumnHeader();
             this.columnHeader2 = new System.Windows.Forms.ColumnHeader();
@@ -47,31 +50,31 @@
             this.panel8 = new System.Windows.Forms.Panel();
             this.anonymousIPText = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel9 = new System.Windows.Forms.Panel();
-            this.packetReceivedText = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.packetSentText = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.activeIPText = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.filterButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.startButton = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.pauseButton = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.packetReceivedText = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.packetSentText = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
+            this.panel10.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panel9.SuspendLayout();
-            this.panel7.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -190,12 +193,12 @@
             // 
             // panel3
             // 
+            this.panel3.Controls.Add(this.panel10);
             this.panel3.Controls.Add(this.packetTable);
             this.panel3.Controls.Add(this.panel8);
             this.panel3.Controls.Add(this.panel9);
             this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.panel5);
-            this.panel3.Controls.Add(this.filterButton);
             this.panel3.Controls.Add(this.stopButton);
             this.panel3.Controls.Add(this.panel6);
             this.panel3.Controls.Add(this.panel4);
@@ -204,6 +207,37 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(956, 688);
             this.panel3.TabIndex = 2;
+            // 
+            // panel10
+            // 
+            this.panel10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel10.Controls.Add(this.label6);
+            this.panel10.Controls.Add(this.filterCombo);
+            this.panel10.Location = new System.Drawing.Point(243, 73);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(178, 62);
+            this.panel10.TabIndex = 8;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.label6.Location = new System.Drawing.Point(3, 3);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(44, 15);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Filter:";
+            // 
+            // filterCombo
+            // 
+            this.filterCombo.FormattingEnabled = true;
+            this.filterCombo.Location = new System.Drawing.Point(49, 21);
+            this.filterCombo.Name = "filterCombo";
+            this.filterCombo.Size = new System.Drawing.Size(121, 23);
+            this.filterCombo.TabIndex = 7;
+            this.filterCombo.SelectedIndexChanged += new System.EventHandler(this.filterCombo_SelectedIndexChanged);
             // 
             // packetTable
             // 
@@ -281,72 +315,6 @@
             this.label7.TabIndex = 0;
             this.label7.Text = " Anonymous IP\'s:";
             // 
-            // panel9
-            // 
-            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel9.Controls.Add(this.packetReceivedText);
-            this.panel9.Controls.Add(this.label9);
-            this.panel9.Location = new System.Drawing.Point(580, 165);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(159, 149);
-            this.panel9.TabIndex = 4;
-            // 
-            // packetReceivedText
-            // 
-            this.packetReceivedText.AutoSize = true;
-            this.packetReceivedText.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.packetReceivedText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.packetReceivedText.Location = new System.Drawing.Point(45, 48);
-            this.packetReceivedText.Name = "packetReceivedText";
-            this.packetReceivedText.Size = new System.Drawing.Size(69, 73);
-            this.packetReceivedText.TabIndex = 1;
-            this.packetReceivedText.Text = "0";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label9.Location = new System.Drawing.Point(4, 12);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(152, 18);
-            this.label9.TabIndex = 0;
-            this.label9.Text = " Packets received :";
-            this.label9.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // panel7
-            // 
-            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel7.Controls.Add(this.packetSentText);
-            this.panel7.Controls.Add(this.label5);
-            this.panel7.Location = new System.Drawing.Point(401, 165);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(159, 149);
-            this.panel7.TabIndex = 4;
-            // 
-            // packetSentText
-            // 
-            this.packetSentText.AutoSize = true;
-            this.packetSentText.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.packetSentText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.packetSentText.Location = new System.Drawing.Point(45, 48);
-            this.packetSentText.Name = "packetSentText";
-            this.packetSentText.Size = new System.Drawing.Size(69, 73);
-            this.packetSentText.TabIndex = 1;
-            this.packetSentText.Text = "0";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.label5.Location = new System.Drawing.Point(12, 12);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 18);
-            this.label5.TabIndex = 0;
-            this.label5.Text = " Packets sent:";
-            this.label5.Click += new System.EventHandler(this.label2_Click);
-            // 
             // panel5
             // 
             this.panel5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -379,20 +347,6 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Active IP\'s:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // filterButton
-            // 
-            this.filterButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(51)))), ((int)(((byte)(73)))));
-            this.filterButton.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.filterButton.Image = global::Network_Traffic_analyzer.Properties.Resources.icons8_filter_26;
-            this.filterButton.Location = new System.Drawing.Point(243, 71);
-            this.filterButton.Name = "filterButton";
-            this.filterButton.Size = new System.Drawing.Size(67, 62);
-            this.filterButton.TabIndex = 0;
-            this.filterButton.Text = "Filter";
-            this.filterButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.filterButton.UseVisualStyleBackColor = false;
-            this.filterButton.Click += new System.EventHandler(this.filterButton_Click);
             // 
             // stopButton
             // 
@@ -453,6 +407,72 @@
             this.pauseButton.UseVisualStyleBackColor = false;
             this.pauseButton.Click += new System.EventHandler(this.pauseButton_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label9.Location = new System.Drawing.Point(4, 12);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(152, 18);
+            this.label9.TabIndex = 0;
+            this.label9.Text = " Packets received :";
+            this.label9.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // packetReceivedText
+            // 
+            this.packetReceivedText.AutoSize = true;
+            this.packetReceivedText.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.packetReceivedText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.packetReceivedText.Location = new System.Drawing.Point(45, 48);
+            this.packetReceivedText.Name = "packetReceivedText";
+            this.packetReceivedText.Size = new System.Drawing.Size(69, 73);
+            this.packetReceivedText.TabIndex = 1;
+            this.packetReceivedText.Text = "0";
+            // 
+            // panel9
+            // 
+            this.panel9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel9.Controls.Add(this.packetReceivedText);
+            this.panel9.Controls.Add(this.label9);
+            this.panel9.Location = new System.Drawing.Point(580, 165);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(159, 149);
+            this.panel9.TabIndex = 4;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.label5.Location = new System.Drawing.Point(12, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(116, 18);
+            this.label5.TabIndex = 0;
+            this.label5.Text = " Packets sent:";
+            this.label5.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // packetSentText
+            // 
+            this.packetSentText.AutoSize = true;
+            this.packetSentText.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.packetSentText.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.packetSentText.Location = new System.Drawing.Point(45, 48);
+            this.packetSentText.Name = "packetSentText";
+            this.packetSentText.Size = new System.Drawing.Size(69, 73);
+            this.packetSentText.TabIndex = 1;
+            this.packetSentText.Text = "0";
+            // 
+            // panel7
+            // 
+            this.panel7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel7.Controls.Add(this.packetSentText);
+            this.panel7.Controls.Add(this.label5);
+            this.panel7.Location = new System.Drawing.Point(401, 165);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(159, 149);
+            this.panel7.TabIndex = 4;
+            // 
             // dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -472,16 +492,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel10.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.panel9.ResumeLayout(false);
-            this.panel9.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -506,21 +528,25 @@
         private Button startButton;
         private Panel panel4;
         private Button pauseButton;
-        private Panel panel7;
-        private Label packetSentText;
-        private Label label5;
         private Label activeIPText;
         private Panel panel8;
         private Label anonymousIPText;
         private Label label7;
-        private Panel panel9;
-        private Label packetReceivedText;
-        private Label label9;
         private ListView packetTable;
         private ColumnHeader columnHeader1;
         private ColumnHeader columnHeader2;
         private ColumnHeader columnHeader3;
         private ColumnHeader columnHeader4;
         private ColumnHeader columnHeader5;
+        private Panel panel10;
+        private ComboBox comboBox1;
+        private Label label6;
+        private ComboBox filterCombo;
+        private Panel panel9;
+        private Label packetReceivedText;
+        private Label label9;
+        private Panel panel7;
+        private Label packetSentText;
+        private Label label5;
     }
 }

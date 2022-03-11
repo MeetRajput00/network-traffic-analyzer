@@ -31,7 +31,7 @@ namespace Network_Traffic_analyzer
         LibPcapLiveDevice wifi_device;
         CaptureFileWriterDevice captureFileWriter;
         Dictionary<int, Packet> capturedPackets_list = new Dictionary<int, Packet>();
-        HashSet<string> activeIPs;
+        HashSet<string> activeIPs,protocolsList;
 
         int packetNumber = 1;
         string time_str = "", sourceIP = "", destinationIP = "", protocol_type = "", length = "";
@@ -52,8 +52,8 @@ namespace Network_Traffic_analyzer
             wifi_device = interfaceList[selectedIntIndex];
             pauseButton.Enabled = false;
             stopButton.Enabled = false;
-            filterButton.Enabled = false;
             activeIPs = new HashSet<string>();
+            protocolsList = new HashSet<string>();
         }
         private void sniffing_Proccess()
         {
@@ -99,6 +99,8 @@ namespace Network_Traffic_analyzer
                 protocol_type = ipPacket.Protocol.ToString();
                 sourceIP = srcIp.ToString();
                 destinationIP = dstIp.ToString();
+                
+               
 
 
 
@@ -111,6 +113,22 @@ namespace Network_Traffic_analyzer
                 item.SubItems.Add(protocol_type);
                 activeIPs.Add(sourceIP);
                 activeIPs.Add(destinationIP);
+                try
+                {
+                    this.Invoke(new MethodInvoker(delegate ()
+                    {
+                        if (!protocolsList.Contains(protocol_type))
+                        {
+                            filterCombo.Items.Add(protocol_type);
+                            protocolsList.Add(protocol_type);
+                        }
+                    }));
+                }
+                catch(Exception err)
+                {
+
+                }
+
                 try
                 {
                     this.Invoke(new MethodInvoker(delegate ()
@@ -199,7 +217,6 @@ namespace Network_Traffic_analyzer
             pauseButton.Enabled = false;
             startButton.Enabled = true;
             stopButton.Enabled = true;
-            filterButton.Enabled = true;
         }
 
         private void stopButton_Click(object sender, EventArgs e)
@@ -208,7 +225,6 @@ namespace Network_Traffic_analyzer
             stopButton.Enabled = false;
             startButton.Enabled = true;
             pauseButton.Enabled = false;
-            filterButton.Enabled = false;
             packetTable.Clear();
             packetTable.Columns.Add("S. No.").Width=100;
             packetTable.Columns.Add("Time taken").Width=140;
@@ -244,6 +260,20 @@ namespace Network_Traffic_analyzer
 
         }
 
+        private void filterCombo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Thread.Sleep(10000);
+            string value = filterCombo.Text.ToLower();
+            for (int i = packetTable.Items.Count - 1; -1 < i; i--)
+            {
+                if
+                (packetTable.Items[i].Text.ToLower().StartsWith(value) == false)
+                {
+                    packetTable.Items[i].Remove();
+                }
+            }
+        }
+
         private void label10_Click(object sender, EventArgs e)
         {
 
@@ -270,7 +300,6 @@ namespace Network_Traffic_analyzer
                 startButton.Enabled = false;
                 pauseButton.Enabled = true;
                 stopButton.Enabled = true;
-                filterButton.Enabled = true;
             }
             else if (startCapturingAgain)
             {
@@ -287,7 +316,6 @@ namespace Network_Traffic_analyzer
                     startButton.Enabled = false;
                     pauseButton.Enabled = true;
                     stopButton.Enabled = true;
-                    filterButton.Enabled = true;
                 }
             }
             startCapturingAgain = true;
