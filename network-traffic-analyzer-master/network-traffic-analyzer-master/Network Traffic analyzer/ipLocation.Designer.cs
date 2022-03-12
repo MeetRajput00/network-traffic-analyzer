@@ -377,7 +377,7 @@
             this.locateIPButton.Name = "locateIPButton";
             this.locateIPButton.Size = new System.Drawing.Size(95, 35);
             this.locateIPButton.TabIndex = 10;
-            this.locateIPButton.Text = "Locate";
+            this.locateIPButton.Text = "LookUp";
             this.locateIPButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.locateIPButton.UseVisualStyleBackColor = true;
             this.locateIPButton.Click += new System.EventHandler(this.locateIPButton_Click);
@@ -425,7 +425,7 @@
             this.webView21.DefaultBackgroundColor = System.Drawing.Color.White;
             this.webView21.Location = new System.Drawing.Point(3, 9);
             this.webView21.Name = "webView21";
-            this.webView21.Size = new System.Drawing.Size(722, 676);
+            this.webView21.Size = new System.Drawing.Size(725, 676);
             this.webView21.TabIndex = 0;
             this.webView21.ZoomFactor = 1D;
             // 

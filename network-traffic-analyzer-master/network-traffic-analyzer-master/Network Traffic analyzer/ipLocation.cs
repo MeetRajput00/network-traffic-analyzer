@@ -10,6 +10,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Web.WebView2.Core;
 
 namespace Network_Traffic_analyzer
 {
@@ -20,8 +21,10 @@ namespace Network_Traffic_analyzer
         {
             
             InitializeComponent();
+            
             this.ipLocationButton.Enabled = false;
         }
+       
 
         private void btnext_Click(object sender, EventArgs e)
         {
@@ -49,7 +52,8 @@ namespace Network_Traffic_analyzer
             //var url = "http://freegeoip.net/json/" + IP;
             //var url = "http://freegeoip.net/json/" + IP;
             string url = "http://ipwhois.app/json/"+IP;
-            using(WebClient client = new WebClient())
+
+            using (WebClient client = new WebClient())
             {
                 var json = client.DownloadString(url);
                 var result = json.ToString();
@@ -62,10 +66,20 @@ namespace Network_Traffic_analyzer
                 this.label16.Text = values["country_phone"];
                 this.label14.Text = values["country"];
                 this.label17.Text = values["timezone_gmt"];
-                string locc = "http://www.google.com/maps/place/" + label4.Text + "," + label6.Text;
-                
+                async void InitializeAsync()
+                {
+                    await webView21.EnsureCoreWebView2Async(null);
+                    string locc = "https://www.google.com/maps?q=" + label4.Text + "," + label6.Text;
+                    webView21.Source = new Uri(locc);
 
-            }   
+
+
+                }
+                InitializeAsync();
+
+
+            }
+
 
         }
         private void locateIPButton_Click(object sender, EventArgs e)

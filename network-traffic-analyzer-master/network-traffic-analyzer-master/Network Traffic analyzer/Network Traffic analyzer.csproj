@@ -10,14 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="IronPython" Version="2.7.12" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebView" Version="6.0.3" />
-    <PackageReference Include="Microsoft.Toolkit.Forms.UI.Controls.WebView" Version="6.1.2" />
     <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1150.38" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="PacketDotNet" Version="0.16.0" />
     <PackageReference Include="Pcap.Net.x86" Version="1.0.4.1" />
     <PackageReference Include="SharpPcap" Version="4.4.0" />
+    <PackageReference Include="SharpWebview" Version="0.6.1" />
   </ItemGroup>
 
   <ItemGroup>
