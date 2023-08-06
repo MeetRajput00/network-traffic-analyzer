@@ -32,7 +32,7 @@ namespace Network_Traffic_analyzer
                 var description = devInterface.Description;
 
                 interfaceList.Add(device);
-                networkInterfaceCombo.Items.Add(friendlyName);
+                networkInterfaceCombo.Items.Add(friendlyName??"meet");
             }
         }
         private void pictureBox1_Click(object sender, EventArgs e)

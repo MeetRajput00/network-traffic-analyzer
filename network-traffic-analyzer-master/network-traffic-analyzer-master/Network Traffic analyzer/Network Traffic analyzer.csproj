@@ -14,13 +14,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="IronPython" Version="2.7.12" />
-    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1150.38" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="PacketDotNet" Version="0.16.0" />
+    <PackageReference Include="IronPython" Version="3.4.1" />
+    <PackageReference Include="Microsoft.Web.WebView2" Version="1.0.1901.177" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="PacketDotNet" Version="1.4.7" />
     <PackageReference Include="Pcap.Net.x86" Version="1.0.4.1" />
-    <PackageReference Include="SharpPcap" Version="4.4.0" />
-    <PackageReference Include="SharpWebview" Version="0.6.1" />
+    <PackageReference Include="SharpPcap" Version="6.2.5" />
+    <PackageReference Include="SharpWebview" Version="0.7.0" />
   </ItemGroup>
 
   <ItemGroup>

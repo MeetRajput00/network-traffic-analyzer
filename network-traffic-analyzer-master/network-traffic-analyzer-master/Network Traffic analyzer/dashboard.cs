@@ -34,7 +34,7 @@ namespace Network_Traffic_analyzer
         HashSet<string> activeIPs,protocolsList;
 
         int packetNumber = 1;
-        string time_str = "", sourceIP = "", destinationIP = "", protocol_type = "", length = "";
+        string time_str = "", sourceIP = "", destinationIP = "", protocol_type = "";
 
         bool startCapturingAgain = false;
 
@@ -59,116 +59,116 @@ namespace Network_Traffic_analyzer
         {
             // Open the device for capturing
             int readTimeoutMilliseconds = 1000;
-            wifi_device.Open(DeviceMode.Promiscuous, readTimeoutMilliseconds);
+            wifi_device.Open(DeviceModes.Promiscuous, readTimeoutMilliseconds);
 
             // Start the capturing process
             if (wifi_device.Opened)
             {
-                captureFileWriter = new CaptureFileWriterDevice(wifi_device, Environment.CurrentDirectory + "capture.pcap");
+                captureFileWriter = new CaptureFileWriterDevice(Environment.CurrentDirectory + "capture.pcap");
                 wifi_device.Capture();
             }
         }
 
-        public void Device_OnPacketArrival(object sender, CaptureEventArgs e)
-        {
-            // dump to a file
-            captureFileWriter.Write(e.Packet);
+        //public void Device_OnPacketArrival(object sender, CaptureEventArgs e)
+        //{
+        //    // dump to a file
+        //    captureFileWriter.Write(e.Packet);
 
 
-            // start extracting properties for the listview 
-            DateTime time = e.Packet.Timeval.Date;
-            time_str = (time.Hour + 1) + ":" + time.Minute + ":" + time.Second + ":" + time.Millisecond;
+        //    // start extracting properties for the listview 
+        //    DateTime time = e.Packet.Timeval.Date;
+        //    time_str = (time.Hour + 1) + ":" + time.Minute + ":" + time.Second + ":" + time.Millisecond;
 
 
-            var packet = PacketDotNet.Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
+        //    var packet = PacketDotNet.Packet.ParsePacket(e.Packet.LinkLayerType, e.Packet.Data);
 
-            // add to the list
-            if (!capturedPackets_list.ContainsKey(packetNumber)) 
-            {
-                capturedPackets_list.Add(packetNumber, packet);
-            }
-
-
-            var ipPacket = (IpPacket)packet.Extract(typeof(IpPacket));
+        //    // add to the list
+        //    if (!capturedPackets_list.ContainsKey(packetNumber)) 
+        //    {
+        //        capturedPackets_list.Add(packetNumber, packet);
+        //    }
 
 
-            if (ipPacket != null)
-            {
-                System.Net.IPAddress srcIp = ipPacket.SourceAddress;
-                System.Net.IPAddress dstIp = ipPacket.DestinationAddress;
-                protocol_type = ipPacket.Protocol.ToString();
-                sourceIP = srcIp.ToString();
-                destinationIP = dstIp.ToString();
+        //    var ipPacket = (IpPacket)packet.Extract(typeof(IpPacket));
+
+
+        //    if (ipPacket != null)
+        //    {
+        //        System.Net.IPAddress srcIp = ipPacket.SourceAddress;
+        //        System.Net.IPAddress dstIp = ipPacket.DestinationAddress;
+        //        protocol_type = ipPacket.Protocol.ToString();
+        //        sourceIP = srcIp.ToString();
+        //        destinationIP = dstIp.ToString();
                 
                
 
 
 
-                var protocolPacket = ipPacket.PayloadPacket;
+        //        var protocolPacket = ipPacket.PayloadPacket;
 
-                ListViewItem item = new ListViewItem(packetNumber.ToString());
-                item.SubItems.Add(time_str);
-                item.SubItems.Add(sourceIP);
-                item.SubItems.Add(destinationIP);
-                item.SubItems.Add(protocol_type);
-                try
-                {
-                    this.Invoke(new MethodInvoker(delegate ()
-                    {
-                        if (!protocolsList.Contains(protocol_type))
-                        {
-                            packetSentText.Text = Convert.ToString(packetNumber);
-                            packetReceivedText.Text = Convert.ToString(packetNumber);
-                        }
-                    }));
-                }
-                catch (Exception err)
-                {
+        //        ListViewItem item = new ListViewItem(packetNumber.ToString());
+        //        item.SubItems.Add(time_str);
+        //        item.SubItems.Add(sourceIP);
+        //        item.SubItems.Add(destinationIP);
+        //        item.SubItems.Add(protocol_type);
+        //        try
+        //        {
+        //            this.Invoke(new MethodInvoker(delegate ()
+        //            {
+        //                if (!protocolsList.Contains(protocol_type))
+        //                {
+        //                    packetSentText.Text = Convert.ToString(packetNumber);
+        //                    packetReceivedText.Text = Convert.ToString(packetNumber);
+        //                }
+        //            }));
+        //        }
+        //        catch (Exception err)
+        //        {
 
-                }
-                activeIPs.Add(sourceIP);
-                activeIPs.Add(destinationIP);
-                try
-                {
-                    this.Invoke(new MethodInvoker(delegate ()
-                    {
-                        if (!protocolsList.Contains(protocol_type))
-                        {
-                            filterCombo.Items.Add(protocol_type);
-                            protocolsList.Add(protocol_type);
-                        }
-                    }));
-                }
-                catch(Exception err)
-                {
+        //        }
+        //        activeIPs.Add(sourceIP);
+        //        activeIPs.Add(destinationIP);
+        //        try
+        //        {
+        //            this.Invoke(new MethodInvoker(delegate ()
+        //            {
+        //                if (!protocolsList.Contains(protocol_type))
+        //                {
+        //                    filterCombo.Items.Add(protocol_type);
+        //                    protocolsList.Add(protocol_type);
+        //                }
+        //            }));
+        //        }
+        //        catch(Exception err)
+        //        {
 
-                }
+        //        }
 
-                try
-                {
-                    this.Invoke(new MethodInvoker(delegate ()
-                    {
-                        activeIPText.Text = Convert.ToString(activeIPs.Count);
-                    }));
-                }
-                catch(Exception err)
-                {
+        //        try
+        //        {
+        //            this.Invoke(new MethodInvoker(delegate ()
+        //            {
+        //                activeIPText.Text = Convert.ToString(activeIPs.Count);
+        //            }));
+        //        }
+        //        catch(Exception err)
+        //        {
 
-                }
+        //        }
 
-                Action action = () => packetTable.Items.Add(item);
-                try
-                {
-                    packetTable.Invoke(action);
-                }
-                catch(Exception err)
-                {
+        //        Action action = () => packetTable.Items.Add(item);
+        //        try
+        //        {
+        //            packetTable.Invoke(action);
+        //        }
+        //        catch(Exception err)
+        //        {
 
-                }
+        //        }
 
-                ++packetNumber;
-            }
-        }
+        //        ++packetNumber;
+        //    }
+        //}
         private void Dashboard_Click(object sender, EventArgs e)
         {
 
@@ -311,7 +311,7 @@ namespace Network_Traffic_analyzer
             if (startCapturingAgain == false) //first time 
             {
                 System.IO.File.Delete(Environment.CurrentDirectory + "capture.pcap");
-                wifi_device.OnPacketArrival += new PacketArrivalEventHandler(Device_OnPacketArrival);
+               // wifi_device.OnPacketArrival += new PacketArrivalEventHandler(Device_OnPacketArrival);
                 sniffing = new Thread(new ThreadStart(sniffing_Proccess));
                 sniffing.Start();
                 startButton.Enabled = false;
@@ -327,7 +327,7 @@ namespace Network_Traffic_analyzer
                     packetTable.Items.Clear();
                     capturedPackets_list.Clear();
                     packetNumber = 1;
-                    wifi_device.OnPacketArrival += new PacketArrivalEventHandler(Device_OnPacketArrival);
+                    //wifi_device.OnPacketArrival += new PacketArrivalEventHandler(Device_OnPacketArrival);
                     sniffing = new Thread(new ThreadStart(sniffing_Proccess));
                     sniffing.Start();
                     startButton.Enabled = false;
